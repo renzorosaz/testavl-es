@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:testmovies/core/widget/button/button_index.dart';
+import 'package:testmovies/core/widget/button/color.dart';
 
 class ButtonPrimary extends StatelessWidget {
   final Size size;
@@ -75,5 +76,3 @@ class ButtonPrimary extends StatelessWidget {
     }
   }
 }
-
-Color colorPrimary = const Color.fromRGBO(0, 61, 111, 0);
