@@ -129,9 +129,17 @@ class _MoviesContainerState extends State<MoviesContainer> {
                   onTap: () {
                     openModal(context, widget.listMovies[index]);
                   },
-                  child: Image.network(
-                    'http://image.tmdb.org/t/p/w500' +
-                        widget.listMovies[index]['poster_path'],
+                  child: Container(
+                    width: ScreenSize.width(context) * 0.85,
+                    height: ScreenSize.height(context) * 0.085,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                    ),
+                    child: Image.network(
+                      'http://image.tmdb.org/t/p/w500' +
+                          widget.listMovies[index]['poster_path'],
+                    ),
                   ),
                 );
               },

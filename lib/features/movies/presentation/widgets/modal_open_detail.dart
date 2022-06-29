@@ -18,15 +18,14 @@ void openModal(BuildContext context, dynamic movieDetail) {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO(0, 61, 111, 1),
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        width: ScreenSize.width(context) * 0.3,
-                        height: ScreenSize.width(context) * 0.6,
-                        child: Image.network(
-                          'http://image.tmdb.org/t/p/w500' +
-                              movieDetail['poster_path'],
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.network(
+                            'http://image.tmdb.org/t/p/w500' +
+                                movieDetail['poster_path'],
+                            width: ScreenSize.width(context) * 0.3,
+                            height: ScreenSize.width(context) * 0.6,
+                          ),
                         ),
                       ),
                       const SizedBox(
