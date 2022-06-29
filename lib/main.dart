@@ -1,20 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testmovies/core/widget/button/color.dart';
+import 'package:testmovies/features/movies/presentation/bloc/movies_bloc.dart';
+import 'package:testmovies/injection_container.dart';
 import 'package:testmovies/navigator.dart';
-//import 'injection_container.dart' as di;
+import 'injection_container.dart' as di;
+import 'bootstrap.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  await di.init();
+  bootstrap(() => MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return
-        //MultiBlocProvider(
-        // providers: [
-        //   // BLOC MOVIES
-        // ],
-        MaterialApp(
+    return BlocProvider(
+        create: (context) =>
+            MoviesBloc(moviesPopularUseCase: sl(), moviesTopRatedUseCase: sl()),
+        child: MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'AVALON',
             theme: ThemeData(
@@ -23,7 +33,6 @@ class MyApp extends StatelessWidget {
               fontFamily: 'Poppins',
             ),
             navigatorKey: AppNavigator.navigatorKey,
-            onGenerateRoute: AppNavigator.onGenerateRoute);
-    //  );
+            onGenerateRoute: AppNavigator.onGenerateRoute));
   }
 }

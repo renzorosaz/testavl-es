@@ -2,13 +2,14 @@ import 'dart:convert';
 
 import 'package:testmovies/core/model/movie_model.dart';
 
-ResponseModel responseModelFromJson(String str) =>
-    ResponseModel.fromJson(json.decode(str));
+ServerResponseModel responseModelFromJson(String str) =>
+    ServerResponseModel.fromJson(json.decode(str));
 
-String responseModelToJson(ResponseModel data) => json.encode(data.toJson());
+String responseModelToJson(ServerResponseModel data) =>
+    json.encode(data.toJson());
 
-class ResponseModel {
-  ResponseModel({
+class ServerResponseModel {
+  ServerResponseModel({
     required this.page,
     required this.results,
     required this.totalPages,
@@ -20,7 +21,8 @@ class ResponseModel {
   final int totalPages;
   final int totalResults;
 
-  factory ResponseModel.fromJson(Map<String, dynamic> json) => ResponseModel(
+  factory ServerResponseModel.fromJson(Map<String, dynamic> json) =>
+      ServerResponseModel(
         page: json["page"] ?? json["page"],
         results: json["results"] ??
             List<MovieModel>.from(

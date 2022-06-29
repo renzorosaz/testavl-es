@@ -10,3 +10,9 @@ class ListVideoFailure extends Failure {
 
   ListVideoFailure({required this.message});
 }
+
+class VerificationFailure extends Failure {
+  final String message;
+
+  VerificationFailure({required this.message});
+}
