@@ -7,7 +7,6 @@ import '../../model/movie_model.dart';
 enum ContainerDraggableType { movies }
 
 class ContainerDraggable extends StatelessWidget {
-  late final MovieModel movieModel;
   final Animation<double> tweenAnimation;
   final Function() handledActiveAnimation;
   final Animation<double> tweenAnimationOut;
@@ -22,7 +21,6 @@ class ContainerDraggable extends StatelessWidget {
   ContainerDraggable(
       {Key? key,
       required this.typeInvoice,
-      required this.movieModel,
       required this.tweenAnimation,
       required this.scrollController,
       required this.handledActiveAnimation,

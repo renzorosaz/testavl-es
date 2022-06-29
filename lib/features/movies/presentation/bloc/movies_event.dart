@@ -30,19 +30,13 @@ class ChangeStateCheckbox extends MoviesEvent {
 }
 
 class GetMoviesPopularEvent extends MoviesEvent {
-  final List<MovieModel> listMoviesPopular;
-
-  GetMoviesPopularEvent({required this.listMoviesPopular});
   @override
   // TODO: implement props
-  List<Object?> get props => [listMoviesPopular];
+  List<Object?> get props => [];
 }
 
 class GetMoviesTopRatedEvent extends MoviesEvent {
-  final List<MovieModel> listMoviesTopRated;
-
-  GetMoviesTopRatedEvent({required this.listMoviesTopRated});
   @override
   // TODO: implement props
-  List<Object?> get props => [listMoviesTopRated];
+  List<Object?> get props => [];
 }

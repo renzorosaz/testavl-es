@@ -6,7 +6,6 @@ class ScaffoldTheme extends StatefulWidget {
   final Color statusBarColor;
   final Color navBarColor;
   final Brightness statusBarBrightness;
-  final Brightness statusBarBrightnessIOS;
 
   const ScaffoldTheme({
     Key? key,
@@ -14,7 +13,6 @@ class ScaffoldTheme extends StatefulWidget {
     this.statusBarBrightness = Brightness.dark,
     this.statusBarColor = Colors.transparent,
     this.navBarColor = Colors.black,
-    this.statusBarBrightnessIOS = Brightness.light,
   }) : super(key: key);
 
   @override
@@ -30,8 +28,7 @@ class _ScaffoldThemeState extends State<ScaffoldTheme> {
           statusBarIconBrightness: widget.statusBarBrightness,
           systemNavigationBarColor: widget.navBarColor,
           systemNavigationBarIconBrightness: Brightness.dark,
-          systemStatusBarContrastEnforced: false,
-          statusBarBrightness: widget.statusBarBrightnessIOS),
+          systemStatusBarContrastEnforced: false),
       child: AnimatedTheme(
           duration: const Duration(milliseconds: 500),
           data: Theme.of(context),

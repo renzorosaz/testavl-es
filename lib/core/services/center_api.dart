@@ -1,8 +1,5 @@
 import 'dart:convert';
-import 'dart:io';
 import 'dart:typed_data';
-
-import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 
 class CenterApi {
@@ -13,7 +10,7 @@ class CenterApi {
   Future<dynamic> get({required String urlSpecific}) async {
     try {
       final response = await http.get(Uri.parse(urlSpecific));
-
+      print(response);
       final dataDecode =
           response.body != "" ? getDataDecode(response.bodyBytes) : [];
       if (response.statusCode >= 200 && response.statusCode <= 204) {

@@ -6,8 +6,8 @@ import 'package:testmovies/core/util/server.dart';
 import '../../../../core/model/server_response.dart';
 
 abstract class MoviesDataSource {
-  Future<List<MovieModel>> getMoviesPopular();
-  Future<List<MovieModel>> getMoviesTopRated();
+  Future<dynamic> getMoviesPopular();
+  Future<dynamic> getMoviesTopRated();
 }
 
 class MoviesDataSourceImpl implements MoviesDataSource {
@@ -15,16 +15,14 @@ class MoviesDataSourceImpl implements MoviesDataSource {
   MoviesDataSourceImpl({required this.centerApi});
 
   @override
-  Future<List<MovieModel>> getMoviesPopular() async {
+  Future<List<dynamic>> getMoviesPopular() async {
     try {
-      ServerResponseModel serverResponse =
+      dynamic serverResponse =
           await centerApi.get(urlSpecific: Server.getPopulars);
 
-      if (serverResponse.results.isNotEmpty) {
-        final body = serverResponse.results;
-        List<MovieModel> _list = body;
-
-        return _list;
+      if (serverResponse['results'] != null) {
+        List<dynamic> body = serverResponse['results'];
+        return body;
       } else {
         throw ListMoviesException(message: "error");
       }
@@ -34,16 +32,14 @@ class MoviesDataSourceImpl implements MoviesDataSource {
   }
 
   @override
-  Future<List<MovieModel>> getMoviesTopRated() async {
+  Future<List<dynamic>> getMoviesTopRated() async {
     try {
-      ServerResponseModel serverResponse =
+      dynamic serverResponse =
           await centerApi.get(urlSpecific: Server.getTopRated);
 
-      if (serverResponse.results.isNotEmpty) {
-        final body = serverResponse.results;
-        List<MovieModel> _list = body;
-
-        return _list;
+      if (serverResponse['results'] != null) {
+        List<dynamic> body = serverResponse['results'];
+        return body;
       } else {
         throw ListMoviesException(message: "error");
       }

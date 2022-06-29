@@ -1,4 +1,5 @@
 import 'package:testmovies/core/model/movie_model.dart';
+import 'package:testmovies/core/model/server_response.dart';
 import 'package:testmovies/core/widget/panel/panel_index.dart';
 
 abstract class MoviesState {}
@@ -17,12 +18,12 @@ class IsSelectedFilterState extends MoviesState {
 }
 
 class GetMoviesPopularState extends MoviesState {
-  final List<MovieModel> listMoviesPopular;
+  final List<dynamic> listMoviesPopular;
   GetMoviesPopularState({required this.listMoviesPopular});
 }
 
 class GetMoviesTopRatedState extends MoviesState {
-  final List<MovieModel> listMoviesTopRated;
+  final List<dynamic> listMoviesTopRated;
   GetMoviesTopRatedState({required this.listMoviesTopRated});
 }
 
@@ -32,4 +33,6 @@ class GetMoviesErrorState extends MoviesState {
   GetMoviesErrorState({required this.message});
 }
 
-class MoviesLoadingState extends MoviesState {}
+class MoviesPopularLoadingState extends MoviesState {}
+
+class MoviesTopLoadingState extends MoviesState {}

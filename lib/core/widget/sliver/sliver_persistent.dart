@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 
 import 'package:testmovies/core/helper/constants_helper.dart';
+import 'package:testmovies/core/widget/button/color.dart';
 
 double _maxAppBarHeight = 120;
 double _minAppBarHeight = 80;
@@ -82,7 +83,8 @@ class SliverPersistenceSimple extends SliverPersistentHeaderDelegate {
           bottomLeft: Radius.circular(_shrinkBorderRadius),
           bottomRight: Radius.circular(_shrinkBorderRadius),
         ),
-        color: Color.lerp(Colors.white, Colors.white54, _shrink),
+        color: Color.lerp(const Color.fromRGBO(0, 61, 111, 1),
+            const Color.fromRGBO(0, 61, 111, 1), _shrink),
         boxShadow: [
           BoxShadow(
               blurRadius: _shrinkShadow, color: Colors.grey.withOpacity(0.6))
@@ -98,74 +100,20 @@ class SliverPersistenceSimple extends SliverPersistentHeaderDelegate {
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 0),
                   child: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 0),
-                    child: _iconSize >= 32
-                        ? Padding(
-                            padding: const EdgeInsets.only(left: 16, right: 16),
-                            child: GestureDetector(
-                              onTap: () {},
-                              child: SizedBox(
-                                height: _iconSize,
-                                width: _iconSize,
-                                child: Icon(Icons.movie_filter_outlined),
-                              ),
-                            ),
-                          )
-                        : Container(),
-                  ),
+                      duration: const Duration(milliseconds: 0),
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 10.0),
+                        child: Center(
+                            child: Text(title,
+                                style: TextStyle(
+                                    fontSize: 23, color: Colors.white))),
+                      )),
                 ),
               ),
               SizedBox(
                 height: _shrinkSizedBoxHeight,
               ),
-              // SafeArea(
-              //   top: _iconSize >= 32 ? false : true,
-              //   bottom: false,
-              //   child: Padding(
-              //     padding: const EdgeInsets.only(bottom: 12),
-              //     child: _ToggleButtons(
-              //         // fontSize: null,
-              //         // iconCategoryPadding: null,
-              //         // indexButton: null,
-              //         // onChangeCategory: (int) {},
-              //         // indexButton: indexButton,
-              //         // fontSize: _shrinkFontSize,
-              //         // space: _shrinkSpaceBetweenIconName,
-              //         // onChangeCategory: onChangeCategory,
-              //         // iconCategorySize: _iconCategorySize,
-              //         // iconCategoryPadding: _shrinkIconCategoryPadding,
-              //         // paddingHorizontalCategories:
-              //         //     _shrinkPaddingHorizontalCategories,
-              //         ),
-              //   ),
-              // ),
             ]),
-        enableBackButton == true
-            ? SafeArea(
-                bottom: false,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                        onTap: () {},
-                        child: const SizedBox(
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 16),
-                            child: Icon(
-                              Icons.arrow_upward,
-                            ),
-                          ),
-                        ))
-                  ],
-                ),
-              )
-            : Container(),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 12),
-          child: Text(title, style: TextStyle(fontSize: _titleSize)),
-        ),
       ]),
     );
   }

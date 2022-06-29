@@ -1,4 +1,5 @@
 import 'package:testmovies/core/model/movie_model.dart';
+import 'package:testmovies/core/model/server_response.dart';
 import 'package:testmovies/features/movies/domain/usecases/movies_use_case.dart';
 import 'package:testmovies/features/movies/presentation/bloc/movies_event.dart';
 import 'package:testmovies/features/movies/presentation/bloc/movies_state.dart';
@@ -19,24 +20,24 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
         (event, emit) => emit(OpenPanelState(panelType: event.panelType)));
 
     on<GetMoviesPopularEvent>((event, emit) async {
-      emit(MoviesLoadingState());
+      emit(MoviesPopularLoadingState());
       final result = await moviesPopularUseCase(MoviesUseCaseParams());
       result.fold((dynamic failure) {
         String message = failure.message;
         emit(GetMoviesErrorState(message: message));
-      }, (List<MovieModel> listMoviesPopular) {
+      }, (List<dynamic> listMoviesPopular) {
         emit(GetMoviesPopularState(listMoviesPopular: listMoviesPopular));
       });
     });
 
     //list top Rated
     on<GetMoviesTopRatedEvent>((event, emit) async {
-      emit(MoviesLoadingState());
-      final result = await moviesPopularUseCase(MoviesUseCaseParams());
+      emit(MoviesTopLoadingState());
+      final result = await moviesTopRatedUseCase(MoviesUseCaseParams());
       result.fold((dynamic failure) {
         String message = failure.message;
         emit(GetMoviesErrorState(message: message));
-      }, (List<MovieModel> listMoviesTopRated) {
+      }, (dynamic listMoviesTopRated) {
         emit(GetMoviesTopRatedState(listMoviesTopRated: listMoviesTopRated));
       });
     });

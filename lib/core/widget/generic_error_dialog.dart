@@ -39,7 +39,7 @@ class GenericErrorDialog extends StatelessWidget {
                 style: TextStyle(fontSize: 32),
               ),
               const SizedBox(height: 19),
-              Text(
+              const Text(
                 "Ha ocurrido un error",
                 style: TextStyle(fontSize: 16),
                 textAlign: TextAlign.center,

@@ -5,13 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:testmovies/features/movies/presentation/pages/movies.dart';
 
 enum Routes {
+  WELCOME,
   MOVIES,
 }
 
 class _Paths {
+  static const String init = '/';
   static const String movies = '/movies';
 
   static const Map<Routes, String> _pathMap = {
+    Routes.WELCOME: _Paths.init,
     Routes.MOVIES: _Paths.movies,
   };
 
@@ -32,7 +35,7 @@ class AppNavigator {
       case _Paths.movies:
         return _pageRoute(page: MoviesScreen());
       default:
-        return _pageRoute(page: MoviesScreen());
+        return _pageRoute(page: Container());
     }
   }
 

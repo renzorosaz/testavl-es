@@ -12,22 +12,19 @@ class PanelIndex extends StatelessWidget {
   final Animation<double> tweenAnimationOut;
   final ScrollController scrollController;
   final Function()? handledActiveAnimation;
-  final MovieModel movieModel;
-  final List<MovieModel> listMovies;
   final List<MovieModel>? listMoviesFiltered;
   final AnimationController animationController;
   late Animation<double> tweenAnimationSelectCheckbox;
   late Animation<double> tweenAnimationSelectCheckboxOut;
-
+  final PanelController panelController;
   PanelIndex(
       {Key? key,
       this.panelType = PanelType.movies,
-      required this.movieModel,
       required this.tweenAnimation,
       required this.tweenAnimationOut,
+      required this.panelController,
       required this.scrollController,
       required this.handledActiveAnimation,
-      this.listMovies = const [],
       this.listMoviesFiltered = const [],
       required this.animationController,
       required this.tweenAnimationSelectCheckbox,
@@ -41,20 +38,19 @@ class PanelIndex extends StatelessWidget {
 
   Widget handledGeneratePanel() {
     switch (panelType) {
-      case PanelType.detailMovie:
+      case PanelType.movies:
         return ContainerDraggable(
           scrollController: scrollController,
           typeInvoice: TypeInvoice.movies,
           animationController: animationController,
           containerDraggableType: ContainerDraggableType.movies,
           handledActiveAnimation: handledActiveAnimation ?? () {},
-          movieModel: movieModel,
           tweenAnimationOut: tweenAnimationOut,
           tweenAnimation: tweenAnimation,
           tweenAnimationSelectCheckboxOut: tweenAnimationSelectCheckboxOut,
           tweenAnimationSelectCheckbox: tweenAnimationSelectCheckbox,
         );
-      case PanelType.movies:
+      case PanelType.detailMovie:
         return Container();
       case PanelType.none:
         return Container();
